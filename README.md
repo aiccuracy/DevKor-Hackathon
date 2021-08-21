@@ -8,7 +8,19 @@ Hackathon on August 21.
 ## 프로그램 개요 
 * 웹사이트에서 음식 월드컵을 진행하고 음식 월드컵 결과에 따라 사용자가 좋아할만한 음식을 추천해준다.
 
-## 구성
+## 프로그램 구성
+
+```
+template_project
+├── dataset
+│   ├── FoodLists.csv
+│   └── FoodData.csv
+├── src
+│   ├── Dataset.py
+│   ├── Recommender.py
+│   └── main.py
+└── README.md
+```
 
 1. src
 
@@ -23,3 +35,4 @@ Hackathon on August 21.
 
 * 웹사이트 구성 : 이건협
 * 추천시스템 및 데이터셋 형성 : 안수진
+
