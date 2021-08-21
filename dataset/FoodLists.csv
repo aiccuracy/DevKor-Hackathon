@@ -117,7 +117,7 @@ Fujian red wine chicken,Fujian red wine chicken
 Buddha's delight,Buddha's delight
 Xiaolongbao,Xiaolongbao
 Baozi,Baozi
-Dim sum,Dim sum
+Dim sum,딤섬
 Jiaozi,Jiaozi
 Tangyuan,Tangyuan
 Cong you bing,Cong you bing
@@ -139,7 +139,7 @@ Guokui,Guokui
 Noodles with tomato egg sauce,Noodles with tomato egg sauce
 Shacha noodles,Shacha noodles
 Chongqing noodles,Chongqing noodles
-Curry rice,Curry rice
+Curry rice,카레
 Hayashi rice,Hayashi rice
 Kamameshi,Kamameshi
 Katemeshi,Katemeshi
@@ -186,12 +186,12 @@ Korokke,Korokke
 Kushikatsu,Kushikatsu
 Satsuma-age,Satsuma-age
 Tempura,Tempura
-Tonkatsu,Tonkatsu
+Tonkatsu,돈가스
 Gyoza,Gyoza
 Kushiyaki,Kushiyaki
 Motoyaki,Motoyaki
 Okonomiyaki,Okonomiyaki
-Takoyaki,Takoyaki
+Takoyaki,타코야키
 Teriyaki,Teriyaki
 Unagi,Unagi
 Yakiniku,Yakiniku
@@ -199,7 +199,7 @@ Horumonyaki,Horumonyaki
 Yakitori,Yakitori
 Yakizakana,Yakizakana
 Motsunabe,Motsunabe
-Shabu-shabu,Shabu-shabu
+Shabu-shabu,샤브샤브
 Sukiyaki,Sukiyaki
 Chirinabe,Chirinabe
 Chigenabe,Chigenabe
@@ -373,7 +373,7 @@ Taralli,Taralli
 Tigella,Tigella
 Ai frutti di mare,Ai frutti di mare
 Calzone,Calzone
-Focaccia al rosmarino ,포테이토 피자
+Focaccia al rosmarino ,포테이토피자
 Pizza al taglio,Pizza al taglio
 Pizza ai quattro formaggi,Pizza ai quattro formaggi
 Pizza capricciosa,Pizza capricciosa
@@ -382,7 +382,7 @@ Pizza pugliese,Pizza pugliese
 Pizza quattro stagioni,Pizza quattro stagioni
 Roman pizza,Roman pizza
 Sicilian pizza,Sicilian pizza
-Carbonara,Carbonara
+Carbonara,까르보나라
 Ciceri e Tria,Ciceri e Tria
 Cacio e pepe,Cacio e pepe
 Lasagne,Lasagne
@@ -480,7 +480,7 @@ Dosa,Dosa
 Doughnut,Doughnut
 Egg in the basket,Egg in the basket
 Eggs and brains,Eggs and brains
-Egg sandwich,Egg sandwich
+Egg sandwich,에그샌드위치
 Eggs Beauregard,Eggs Beauregard
 Eggs Benedict,Eggs Benedict
 Egg bhurji,Egg bhurji
@@ -516,7 +516,7 @@ Muffin,Muffin
 Nasi goreng,Nasi goreng
 Nasi lemak,Nasi lemak
 Oatmeal,Oatmeal
-Omelette,Omelette
+Omelette,오므라이스
 Ontbijtkoek,Ontbijtkoek
 Oysters Rockefeller,Oysters Rockefeller
 Pain au chocolat,Pain au chocolat
@@ -528,7 +528,7 @@ Quiche,Quiche
 Raisin bran,Raisin bran
 Raisin bread,Raisin bread
 Rolled oats,Rolled oats
-Salmon,Salmon
+Salmon,연어회
 Satti,Satti
 Sausage,Sausage
 Scone,Scone
@@ -708,7 +708,7 @@ Chilli chicken,Chilli chicken
 Cola chicken,Cola chicken
 Dakjuk,닭죽
 Dakkochi,닭꼬치
-Crispy fried chicken,후라이드 치킨
+Crispy fried chicken,후라이드치킨
 Flying Jacob,Flying Jacob
 Soy sauce chicken,Soy sauce chicken
 Tandoori chicken,Tandoori chicken
@@ -760,9 +760,10 @@ Lamb and mutton,양고기
 Hot pot,훠궈
 Taco,타코
 Rice noodle,쌀국수
-Spaghetti and meatballs,토마토스파게티
+Spaghetti and meatballs,미트볼스파게티
 Gukbap,국밥
 Focaccia,포테이토 피자
 jeyuk-bokkeum,제육볶음
 Apple pie,애플파이
 Cheesecake,치즈케익
+Sushi,스시
