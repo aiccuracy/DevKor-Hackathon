@@ -1,10 +1,21 @@
-class Recommender():
+import pandas as pd
+import numpy as np
+import sys
+import pathlib
+from pathlib import Path
+from bs4 import BeautifulSoup
+import requests
+import csv
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-    def singleRecommendation(data, foodName, k = 6):
+class Recommender():
+    
+    def singleRecommendation(self, data, foodName, k = 6):
         vector = CountVectorizer()
         t1 = vector.fit_transform(data['foodDescription'])
         cos_similarity = cosine_similarity(t1, t1).argsort()[:,::-1] 
-
+        
         foodIdx = data[data['foodName'] == foodName].index.values[0]
         simIdx = cos_similarity[foodIdx, :k]
         simIdx = simIdx[1:]
@@ -14,7 +25,7 @@ class Recommender():
             rec.append(food['foodName']) # r : 전체 dataset에서의 index
         return rec
     
-    def doubleRecommendation(data, k = 15, *foodName):
+    def doubleRecommendation(self, data, k = 15, *foodName):
         numUser = len(foodName)
         commonFeatures = []
         idxList = []
