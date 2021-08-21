@@ -3,6 +3,11 @@ import numpy as np
 import sys
 import pathlib
 from pathlib import Path
+from bs4 import BeautifulSoup
+import requests
+import csv
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 sys.path.insert(0, str( Path(Path(Path(Path(Path(__file__).parent.absolute()).parent.absolute()).parent.absolute()).parent.absolute()) ))
 from Dataset import Dataset
@@ -32,6 +37,7 @@ def main():
     df = foodData.drop(['imgUrl'], axis = 1)
     df.fillna(' ', inplace = True)
 
+
     # description부분 중복 단어 제거
     detail = []
     for i in df.Description:
@@ -53,8 +59,7 @@ def main():
     df['Detail'] = detail # 데이터프레임에 결과 저장
 
     df = df.drop(['Description'], axis = 1)
-
-# description 부분을 string으로 
+    # description 부분을 string으로 
     explanation = df.Detail.values.tolist()
     exp = []
     for lst in explanation:
@@ -75,18 +80,18 @@ def main():
         string += tmp
         concat.append(string)
 
+
     # 새로운 데이터 프레임에 정리
     data = pd.DataFrame(data = None, columns = ['foodName', 'foodDescription'])
     data['foodDescription'] = concat
     data['foodName'] = df['foodName'].values.tolist()
 
-    # print('data shape : {}'.format(data.shape))
-    # print('data : {}'.format(data.head(30)))
-
-    # Content-based Filtering
     # if '한명':
     rec = Recommender()
-    print(rec.singleRecommendation(data, 'foodName'))
+    result = rec.singleRecommendation(data, 'Bibimbap')
+    print(result)
+    return result
+
     # else:
     #     return recommender(data, 'foodName')
 
