@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-class FoodData:
+class Dataset:
     def getWiki(self, foodName):
         website = requests.get('https://en.wikipedia.org/wiki/'+ foodName) 
         soup = BeautifulSoup(website.text, 'html.parser')
