@@ -68,7 +68,6 @@ template_project
 1. Dataset 형성 및 전처리 과정
 
 * FoodList가 있는 csv 파일을 parsing한 후, wikipedia 크롤링을 통해 음식 사진 URL 및 음식 관련 정보를 불러온다.
-  
 * 음식이름 중 중복되는 항 제거
 * Description column에서 중복되는 단어 제거
 * foodName을 제외한 나머지 항은 하나의 str으로 합침[foodName, foodDescription]

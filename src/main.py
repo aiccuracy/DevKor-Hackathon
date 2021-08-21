@@ -17,27 +17,16 @@ from Connection import WebConnect
 def main(argv):
     db = Dataset()
     foodNameList = db.csvParser('dataset/FoodLists.csv')
-
-    foodNames = [] # foodName을 1차원 리스트로 저장
-    for lst in foodNameList:
-        foodNames.append(lst[0])
-
-    foodNames = foodNames[1:]
-    columns = ['foodName', 'Type', 'Country', 'Region', 'Ingredient', 'Calorie','imgUrl', 'Description']
-    foodData = pd.DataFrame(data = None, columns = columns) #main db
-
-    for food in foodNames:
-        foodinfo = db.getWiki(food)
-        foodData = foodData.append(pd.Series(foodinfo, index = foodData.columns), ignore_index = True)
-
-    foodData.to_csv('dataset/foodDB.csv', sep = ',')
+    dataset = db.csvParser('dataset/foodDB.csv')
+    dataset = dataset[1:]
+    columns = ['foodName', 'Type', 'Country', 'Region', 'Ingredient', 'Calorie', 'imgUrl', 'Description']
+    foodData = pd.DataFrame(data = dataset, columns = columns)
 
     # foodName이 중복되는 항 제거
     foodData.drop_duplicates(subset = ['foodName'], keep = 'first', inplace = True)
 
     df = foodData.drop(['imgUrl'], axis = 1)
     df.fillna(' ', inplace = True)
-
 
     # description부분 중복 단어 제거
     detail = []
@@ -60,6 +49,7 @@ def main(argv):
     df['Detail'] = detail # 데이터프레임에 결과 저장
 
     df = df.drop(['Description'], axis = 1)
+
     # description 부분을 string으로 
     explanation = df.Detail.values.tolist()
     exp = []
@@ -81,7 +71,6 @@ def main(argv):
         string += tmp
         concat.append(string)
 
-
     # 새로운 데이터 프레임에 정리
     data = pd.DataFrame(data = None, columns = ['foodName', 'foodDescription'])
     data['foodDescription'] = concat
@@ -90,14 +79,13 @@ def main(argv):
     web = WebConnect()
     rec = Recommender()
     if len(argv[1:]) == 1:
-
-        foodName = web.getWinner('너비아니', foodNameList)
+        name = argv[1]
+        foodName = web.getWinner(name, foodNameList)
         result = rec.singleRecommendation(data, foodName)
         result = web.sendRecommend(foodData, result)
 
         for i in range(len(result)):
             result[i][0] = web.toKor(foodNameList, result[i][0])
-        # return result
         print(result)
 
     elif len(argv[1:]) >= 2:
@@ -112,9 +100,6 @@ def main(argv):
         for i in range(len(result)):
             result[i][0] = web.toKor(foodNameList, result[i][0])
         print(result)
-    # else:
-    #     return recommender(data, 'foodName')
-
 
 if __name__ == '__main__':
     main(sys.argv)

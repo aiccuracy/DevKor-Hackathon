@@ -53,4 +53,21 @@ class Dataset:
         csvList = []
         for line in reader:
             csvList.append(line)
-        return csvList
+        return csvLis
+
+    def makeDataset(self, file):
+        foodNameList = self.csvParser('dataset/FoodLists.csv')
+
+        foodNames = [] # foodName을 1차원 리스트로 저장
+        for lst in foodNameList:
+            foodNames.append(lst[0])
+
+        foodNames = foodNames[1:]
+        columns = ['foodName', 'Type', 'Country', 'Region', 'Ingredient', 'Calorie','imgUrl', 'Description']
+        foodData = pd.DataFrame(data = None, columns = columns) #main db
+
+        for food in foodNames:
+            foodinfo = db.getWiki(food)
+            foodData = foodData.append(pd.Series(foodinfo, index = foodData.columns), ignore_index = True)
+
+        return foodData.to_csv('dataset/foodDB.csv', sep = ',')
