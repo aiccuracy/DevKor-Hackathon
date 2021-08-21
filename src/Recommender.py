@@ -6,6 +6,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import requests
 import csv
+import random
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -45,6 +46,7 @@ class Recommender():
             features = i.split(' ')
             features = set(features)
             features = list(features)
+        random.shuffle(features)
         features = ' '.join(features)
         commonFeature = {'foodName': 'COMMON', 'foodDescription': features}
         data = data.append(commonFeature, ignore_index = True)

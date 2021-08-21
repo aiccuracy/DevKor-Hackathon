@@ -15,13 +15,13 @@ from Recommender import Recommender
 from Connection import WebConnect
 
 def main(argv):
+
     db = Dataset()
     foodNameList = db.csvParser('dataset/FoodLists.csv')
     dataset = db.csvParser('dataset/foodDB.csv')
     dataset = dataset[1:]
     columns = ['foodName', 'Type', 'Country', 'Region', 'Ingredient', 'Calorie', 'imgUrl', 'Description']
     foodData = pd.DataFrame(data = dataset, columns = columns)
-
     # foodName이 중복되는 항 제거
     foodData.drop_duplicates(subset = ['foodName'], keep = 'first', inplace = True)
 

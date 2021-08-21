@@ -53,7 +53,7 @@ class Dataset:
         csvList = []
         for line in reader:
             csvList.append(line)
-        return csvLis
+        return csvList
 
     def makeDataset(self, file):
         foodNameList = self.csvParser('dataset/FoodLists.csv')
