@@ -25,14 +25,15 @@ class Recommender():
             rec.append(food['foodName']) # r : 전체 dataset에서의 index
         return rec
     
-    def doubleRecommendation(self, data, k = 15, *foodName):
+    def doubleRecommendation(self, data, k = 5, *foodName):
         numUser = len(foodName)
         commonFeatures = []
         idxList = []
+
         for n in range(numUser):
-            userIdx = data[data['foodName'] == foodName[n]].index.values[0]
+            userIdx = data[data['foodName'] == foodName[0][n]].index.values
             idxList.append(userIdx)
-            foodinfo = data[data['foodName'] == foodName[n]].values.tolist()[0]
+            foodinfo = data[data['foodName'] == foodName[0][n]].values.tolist()[0]
             commonFeatures.append(foodinfo[1])
         feature = []
         string = ''

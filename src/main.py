@@ -102,11 +102,12 @@ def main(argv):
 
     elif len(argv[1:]) >= 2:
         names = argv[1:]
+        numRecommend = len(names) + 3
         engNames = []  
         for n in names:
             eng = web.getWinner(n, foodNameList)
             engNames.append(eng)
-        result = rec.doubleRecommendation(data, len(names) + 3, engNames)
+        result = rec.doubleRecommendation(data, numRecommend, engNames)
         result = web.sendRecommend(foodData, result)
         for i in range(len(result)):
             result[i][0] = web.toKor(foodNameList, result[i][0])
