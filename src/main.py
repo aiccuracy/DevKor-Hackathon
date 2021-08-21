@@ -12,8 +12,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 sys.path.insert(0, str( Path(Path(Path(Path(Path(__file__).parent.absolute()).parent.absolute()).parent.absolute()).parent.absolute()) ))
 from Dataset import Dataset
 from Recommender import Recommender
+from Connection import WebConnect
 
-def main():
+def main(argv):
     db = Dataset()
     foodNameList = db.csvParser('dataset/FoodLists.csv')
 
@@ -86,15 +87,33 @@ def main():
     data['foodDescription'] = concat
     data['foodName'] = df['foodName'].values.tolist()
 
-    # if '한명':
+    web = WebConnect()
     rec = Recommender()
-    result = rec.singleRecommendation(data, 'Bibimbap')
-    print(result)
-    return result
+    if len(argv[1:]) == 1:
 
+        foodName = web.getWinner('너비아니', foodNameList)
+        result = rec.singleRecommendation(data, foodName)
+        result = web.sendRecommend(foodData, result)
+
+        for i in range(len(result)):
+            result[i][0] = web.toKor(foodNameList, result[i][0])
+        # return result
+        print(result)
+
+    elif len(argv[1:]) >= 2:
+        names = argv[1:]
+        engNames = []  
+        for n in names:
+            eng = web.getWinner(n, foodNameList)
+            engNames.append(eng)
+        result = rec.doubleRecommendation(data, len(names) + 3, engNames)
+        result = web.sendRecommend(foodData, result)
+        for i in range(len(result)):
+            result[i][0] = web.toKor(foodNameList, result[i][0])
+        print(result)
     # else:
     #     return recommender(data, 'foodName')
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)

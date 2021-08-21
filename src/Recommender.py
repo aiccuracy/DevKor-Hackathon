@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class Recommender():
     
-    def singleRecommendation(self, data, foodName, k = 6):
+    def singleRecommendation(self, data, foodName, k = 4):
         vector = CountVectorizer()
         t1 = vector.fit_transform(data['foodDescription'])
         cos_similarity = cosine_similarity(t1, t1).argsort()[:,::-1] 
